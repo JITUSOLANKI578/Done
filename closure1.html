@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+         what is closure ?
+
+           variable scope 
+           nested function - fun inside fun 
+           condistion
+           1  global variable use by outer fun , inner fun or both
+           2 outer fun vari use inner fun 
+
+            1 outer , inner or both fun vari not use as a globally 
+babel 
+            2 inner fun vari not use by out fun 
+
+            hoisting hosting
+
+                jj- read 
+                kkk
+                ooo
+                ppp
+                yyy
+                iiii
+                rrr
+                mmm
+                nn
+        */
+
+
+         
+                   
+                  document.write(k1) // read 
+
+          function display(){ //outer func 
+
+                 let k="nodejs"
+                document.write(k1)
+
+              function data(){ //inner func 
+
+                let k1="js"
+              }
+
+              data();
+          }
+          
+            display();
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<body>
+    <form id="myform" onsubmit="datapost();">
+        enter title: <input type="text" id="title" /><br /><br />
+        enter price: <input type="text" id="price" /><br /><br />
+        enter description: <input type="text" id="description" /><br /><br />
+        enter category: <input type="text" id="category" /><br /><br />
+        enter image: <input type="text" id="image" /><br /><br />
+        <input type="submit" value="postdata" />
+    </form>
+    
+    <table id="mytable" border="1px">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>title</th>
+                <th>price</th>
+                <th>description</th>
+                <th>category</th>
+                <th>image</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody id="mytable"></tbody>
+    </table>
+
+    <script>
+        let api = "https://631f57da58a1c0fe9f670e23.mockapi.io/Myapi";
+
+        function fetchData() {
+            fetch(api)
+                .then((response) => response.json())
+                .then((json) => {
+                    let tableBody = document.querySelector("#mytable");
+                    tableBody.innerHTML = ''; // Clear existing rows
+
+                    json.forEach((data) => {
+                        let row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${data.id}</td>
+                            <td>${data.title}</td>
+                            <td>${data.price}</td>
+                            <td>${data.description}</td>
+                            <td>${data.category}</td>
+                            <td><img src=${data.image} width='40' height='50'></td>
+                            <td>
+                                <button onclick="datadelete(${data.id})">delete</button>
+                                <button onclick="editData(${data.id})">edit</button>
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch((error) => console.log(error));
+        }
+
+        function datapost() {
+            event.preventDefault();
+
+            let mydata = {
+                title: document.getElementById("title").value,
+                price: document.getElementById("price").value,
+                description: document.getElementById("description").value,
+                category: document.getElementById("category").value,
+                image: document.getElementById("image").value,
+            };
+
+            fetch(api, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(mydata),
+            })
+                .then((response) => response.json())
+                .then(() => {
+                    fetchData(); // Refresh the table
+                })
+                .catch((error) => console.log(error));
+        }
+
+        function datadelete(id) {
+            fetch(`${api}/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            .then(() => {
+                fetchData(); // Refresh the table after deletion
+            })
+            .catch((error) => console.log(error));
+        }
+
+        function editData(id) {
+            // Implement your edit logic here
+            console.log("Edit item with id:", id);
+        }
+
+        // Initial fetch to populate the table
+        fetchData();
+    </script>
+</body>
+</html>

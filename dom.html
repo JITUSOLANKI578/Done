@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form method="get" name="loginform" onsubmit="datafetch()">
+  
+    enter your email : - <input type="text" name="email" id="email1"><br><br>
+    
+    enter your password :- <input type="password" name="pass" id="pass1"><br><br>
+  
+    <input type="submit" value="login">
+    
+    </form>
+    
+       <script>
+       //var let const
+                   function datafetch(){
+  
+                  //	 let emaildata = document.getElementById("email").value;        
+  
+                    // let passdata = document.getElementById("pass").value;
+                    
+                    var emaildata = document.getElementsByName("email1");
+                    let passdata = document.getElementsByName("pass1");
+                    
+                    // let emaildata=  document.loginform.email.value;
+                     
+                    // let passdata=  document.loginform.pass.value;
+                     
+                    // alert(emaildata + " "+ passdata)
+                     document.write(emaildata + " "+ passdata)
+                    
+                    
+                     //  console.log(emaildata);
+                   }
+       </script>
+</body>
+</html>

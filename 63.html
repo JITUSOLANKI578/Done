@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+       <table id="myapi" border="1px">
+
+            <thead>
+
+                <tr>
+                    <th>id</th>
+                    <th>title</th>
+                    <th>category</th>
+                    <th>image</th>
+                    <th>description</th>
+                    <th>price</th>
+                </tr>
+            </thead>
+       </table>
+    
+
+        <script>
+// dom js - hooks  // queryselector //  createelement //appendchild  <p>${x}</p> // data bind ${}
+
+// put - all column update  , patch 
+
+// update table name set price where id=3;
+
+       function datafetch(){
+              let api= "https://6711db254eca2acdb5f5f56c.mockapi.io/crudapi";
+
+              fetch(api)
+              .then(response => response.json())// json
+              .then(data=>{
+
+
+                         let n= document.querySelector('#myapi')// html components //5 data 
+
+                
+                    data.map(x=>{
+
+
+                          let c= document.createElement(`tr`)
+
+                          c.innerHTML= `
+
+                            <td>${x.id}</td>
+                            <td>${x.title}</td>
+                            <td>${x.category}</td>
+                            <td>${x.price}</td>
+                             <td>${x.image}</td>
+                             <td>${x.description}</td> `
+
+                             n.appendChild(c);
+
+                    })
+
+                   
+                   
+                    
+              })
+
+             
+              .catch(error=>console.log(error))
+            }
+        </script>
+</body>
+</html>

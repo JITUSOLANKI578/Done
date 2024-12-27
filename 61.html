@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     /*
+  promise, async, filter , closure, call, apply,bind,
+   
+  1 oops concept 
+  2 as a object 
+     oops types  -  1 fully obj- dart 
+                    12 partial obj 
+
+call, apply,bind
+
+                        databinding                 dataexecution
+
+call                        at a time                at a time
+apply                       at a time                at a time
+bind                        at a time                future 
+
+              data borrow 
+
+     */
+
+                /*  function display(tech,salary){
+
+                        document.write(tech + " " + salary + " "+ this.ename)
+                  }
+
+
+                     let empname ={//object
+
+                            ename:"yashpatel"// property and value 
+                     }
+                //  display.call(ename,"reactjs","30000")
+                display.apply(empname,["reactjs","30000"])
+               // let n=display.bind(empname,"reactjs","30000")
+
+               // n()
+                
+                 closure - nested fun and variable scope 
+                   1 global {}
+                   2 local {}
+               positive condistion
+
+                     1 global variable use by outer fun,inner fun and both 
+                     2 outer fun var use inner fun 
+
+                     // negative condistion
+                        
+                        1 outer , inner fun variable never use as a global 
+                        2 inner varible never us in outer 
+                        
+               */
+                        // let a="hello"; //global 
+                     /*   document.write(c)
+                    function frontend(){//outer 
+                              
+                        document.write(c)// closure 
+
+                        function backend(){//inner fun 
+
+                            let c="nodejs"
+
+                        }
+
+                        backend()
+                    }
+
+                    frontend()*/
+
+
+                    //filter - 
+
+
+                     let age= [10,23,45,67,89,13] // 18 
+
+                      //document.write(a)
+
+                       let n= age.filter(voting)
+
+                         document.write(n)
+
+                          function voting(age){
+
+                             return age >= 18;
+
+                          }
+    </script>
+</body>
+</html>
